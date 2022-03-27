@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A02_回應圖片(二進制資料流)練習</title>
+</head>
+<body>
+	<form action="ResponseImg.do" method="get">
+		<div>
+			請輸入圖片名稱: <input type="text" name="ImgId">
+		</div>
+
+		<div>
+			<button>取得圖片！</button>
+		</div>
+
+	</form>
+</body>
+</html>

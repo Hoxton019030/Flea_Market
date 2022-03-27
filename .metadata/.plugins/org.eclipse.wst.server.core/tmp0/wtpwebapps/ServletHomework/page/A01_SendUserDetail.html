@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>A01_取得請求的文字參數練習</title>
+	<style>
+		div {
+			margin: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<form action="xxxSevrlet" method="post">
+			<div>
+				姓名：
+				<input type="text" name="userName">
+			</div>
+
+			<div>
+				性別：
+				<label><input type="radio" name="gender" value="男性">男</label>
+				<label><input type="radio" name="gender" value="女性">女</label>
+				<label><input type="radio" name="gender" value="其他" checked="checked">其他</label>
+			</div>
+
+			<div>
+				興趣：
+				<label><input type="checkbox" name="hobby" value="追劇">看電影</label>
+				<label><input type="checkbox" name="hobby" value="電腦">打電腦</label>
+				<label><input type="checkbox" name="hobby" value="美食">吃東西</label>
+				<label>
+					<input type="checkbox" name="hobby" value="" id="otherHobby">其他 <input type="text" id="hobbyUesrInput" hidden>
+				</label>
+			</div>
+
+			<div> <input type="submit" value="送出表單"> </div>
+		</form>
+	</div>
+
+	<script>
+		var otherHobby = document.getElementById("otherHobby");
+		var hobbyUesrInput = document.getElementById("hobbyUesrInput");
+
+		//當點擊興趣的「其他」選項時，切換輸入欄位顯示與否
+		otherHobby.addEventListener("click", function () {
+			hobbyUesrInput.toggleAttribute("hidden");
+		})
+
+		//同步使用者輸入值，到真正要送出的標籤的value中
+		hobbyUesrInput.addEventListener("input", function () {
+			otherHobby.value = hobbyUesrInput.value;
+		})
+
+	</script>
+</body>
+
+</html>
