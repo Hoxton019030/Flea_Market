@@ -28,3 +28,5 @@
 1648415749637	Extract local variable 'input'
 1648415760211	Extract local variable 'bytes'
 1648415784165	Extract local variable 'encoderString'
+1648421863347	Extract local variable 'edn'
+1648423160068	Extract local variable 'array'
