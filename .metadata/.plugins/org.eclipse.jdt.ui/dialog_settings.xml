@@ -37,4 +37,6 @@
 	<section name="ClasspathContainerSelectionPage">
 		<item key="index" value="7"/>
 	</section>
+	<section name="RenameInformationPopup">
+	</section>
 </section>

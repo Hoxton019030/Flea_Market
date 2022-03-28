@@ -20,14 +20,20 @@ import java.util.regex.Pattern;
  */
 public class A04_RegularExpression {
 	public static void main(String[] args) throws Exception {
+		
+		String doMain="localhost:8080";
 		String myImgString = "<div>My dog:<img src='http://localhost/project/dog.jpg'></div><div>My cat:<img src='http://localhost/project/cat.jpg'></div></div><div>My rabbit:<img src='http://localhost/project/rabbit.jpg'></div>";
-		String pattern1 = "^(\\bhttp://\\w*/\\w*/\\w*.jpg)";
+//		String pattern1 = "^(\\bhttp://\\w*/\\w*/\\w*.jpg)";
 		String pattern2 = "\\bhttp://\\w*/\\w*/\\w*.jpg";
-		String[] array = myImgString.split(pattern2);
-		for (String string : array) {
-			System.out.println(string);
-		}
+		String answer ="(http|https).*?(.jpg|.png)";
 
+		Pattern p = Pattern.compile(pattern2);
+		Matcher m = p.matcher(myImgString);
+
+		while (m.find()) {
+
+			System.out.println(m.group());
+		}
 //		Pattern r =Pattern.compile(pattern);
 //		Matcher m =r.matcher(myImgString);
 //		if(m.find()) {
@@ -59,25 +65,24 @@ public class A04_RegularExpression {
 
 		int i = 0; // 只爬前100張圖片
 //		while (m.find() && i <= 100) {
-			File f = new File(FILE_OUTPUT_FOLDER + "\\" + i + ".jpg");
-			try { // 即使出錯也要繼續執行
+		File f = new File(FILE_OUTPUT_FOLDER + "\\" + i + ".jpg");
+		try { // 即使出錯也要繼續執行
 //				URL fileUrl = new URL(m.group());
 
-				BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
+			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
 //				bos.write(fileUrl.openStream().readAllBytes());
-				bos.close();
+			bos.close();
 
-				i++;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			i++;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
 
 //		br.close();
 
-		/*
-		 * 1.會有錯誤訊息是因為正規表達式沒有寫好。 2.這是最簡單的網路爬蟲實現，實務上會採用第三方套件，配合正規表達式做處理。
-		 * 3.有些網站會擋爬蟲(java端送出錯誤的header)，此時需要模擬HttpRequest的Header，以繞過網站檢查。
-		 */
-	}
-
+	/*
+	 * 1.會有錯誤訊息是因為正規表達式沒有寫好。 2.這是最簡單的網路爬蟲實現，實務上會採用第三方套件，配合正規表達式做處理。
+	 * 3.有些網站會擋爬蟲(java端送出錯誤的header)，此時需要模擬HttpRequest的Header，以繞過網站檢查。
+	 */
+}
